@@ -1,6 +1,6 @@
 {
   "name": "sugar-date",
-  "description": "A Javascript utility library for working with native objects. Date module.",
+  "description": "Date module for the Sugar Javascript utility library.",
   "homepage": "https://sugarjs.com/",
   "license": "MIT",
   "authors": [
