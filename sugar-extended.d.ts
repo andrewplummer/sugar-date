@@ -3,13 +3,13 @@
 // Definitions by: Andrew Plummer <plummer.andrew@gmail.com>
 
 interface DateConstructor {
-  addLocale(code: string, def: Object): sugarjs.Locale;
+  addLocale(localeCode: string, def: Object): sugarjs.Locale;
   create(d?: string|number|Date, options?: sugarjs.Date.DateCreateOptions): Date;
   getAllLocaleCodes(): string[];
   getAllLocales(): Array<sugarjs.Locale>;
   getLocale(localeCode?: string): sugarjs.Locale;
-  removeLocale(code: string): sugarjs.Locale;
-  setLocale(code: string): sugarjs.Locale;
+  removeLocale(localeCode: string): sugarjs.Locale;
+  setLocale(localeCode: string): sugarjs.Locale;
 }
 
 interface Date {
@@ -98,7 +98,7 @@ interface Date {
   monthsUntil(d?: string|number|Date, options?: sugarjs.Date.DateCreateOptions): number;
   relative(localeCode?: string, fn?: (num: number, unit: number, ms: number, loc: sugarjs.Locale) => string): string;
   relative(fn?: (num: number, unit: number, ms: number, loc: sugarjs.Locale) => string): string;
-  relativeTo(d: string|number|Date, localeCode?: undefined): string;
+  relativeTo(d: string|number|Date, localeCode?: string): string;
   reset(unit?: string, localeCode?: string): Date;
   rewind(set: string|Object, reset?: boolean): Date;
   rewind(milliseconds: number): Date;

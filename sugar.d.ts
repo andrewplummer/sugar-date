@@ -4,7 +4,6 @@
 
 declare module sugarjs {
 
-  type DisambiguationFunction = Function;
   type SugarDefaultChainable<RawValue> = Array.Chainable<any, RawValue> &
                                          Date.Chainable<RawValue> &
                                          Function.Chainable<RawValue> &
@@ -12,6 +11,7 @@ declare module sugarjs {
                                          Object.Chainable<RawValue> &
                                          RegExp.Chainable<RawValue> &
                                          String.Chainable<RawValue>;
+
   type NativeConstructor = ArrayConstructor |
                            DateConstructor |
                            FunctionConstructor |
@@ -121,13 +121,13 @@ declare module sugarjs {
     interface Constructor extends SugarNamespace {
       (d?: string|number|Date, options?: DateCreateOptions): Chainable<Date>;
       new(d?: string|number|Date, options?: DateCreateOptions): Chainable<Date>;
-      addLocale(code: string, def: Object): Locale;
+      addLocale(localeCode: string, def: Object): Locale;
       create(d?: string|number|Date, options?: DateCreateOptions): Date;
       getAllLocaleCodes(): string[];
       getAllLocales(): Array<Locale>;
       getLocale(localeCode?: string): Locale;
-      removeLocale(code: string): Locale;
-      setLocale(code: string): Locale;
+      removeLocale(localeCode: string): Locale;
+      setLocale(localeCode: string): Locale;
       addDays(instance: Date, n: number, reset?: boolean): Date;
       addHours(instance: Date, n: number, reset?: boolean): Date;
       addMilliseconds(instance: Date, n: number, reset?: boolean): Date;
@@ -213,7 +213,7 @@ declare module sugarjs {
       monthsUntil(instance: Date, d?: string|number|Date, options?: DateCreateOptions): number;
       relative(instance: Date, localeCode?: string, fn?: (num: number, unit: number, ms: number, loc: Locale) => string): string;
       relative(instance: Date, fn?: (num: number, unit: number, ms: number, loc: Locale) => string): string;
-      relativeTo(instance: Date, d: string|number|Date, localeCode?: undefined): string;
+      relativeTo(instance: Date, d: string|number|Date, localeCode?: string): string;
       reset(instance: Date, unit?: string, localeCode?: string): Date;
       rewind(instance: Date, set: string|Object, reset?: boolean): Date;
       rewind(instance: Date, milliseconds: number): Date;
@@ -331,7 +331,7 @@ declare module sugarjs {
       monthsUntil(d?: string|number|Date, options?: DateCreateOptions): SugarDefaultChainable<number>;
       relative(localeCode?: string, fn?: (num: number, unit: number, ms: number, loc: Locale) => SugarDefaultChainable<string>): SugarDefaultChainable<string>;
       relative(fn?: (num: number, unit: number, ms: number, loc: Locale) => SugarDefaultChainable<string>): SugarDefaultChainable<string>;
-      relativeTo(d: string|number|Date, localeCode?: undefined): SugarDefaultChainable<string>;
+      relativeTo(d: string|number|Date, localeCode?: string): SugarDefaultChainable<string>;
       reset(unit?: string, localeCode?: string): SugarDefaultChainable<Date>;
       rewind(set: string|Object, reset?: boolean): SugarDefaultChainable<Date>;
       rewind(milliseconds: number): SugarDefaultChainable<Date>;

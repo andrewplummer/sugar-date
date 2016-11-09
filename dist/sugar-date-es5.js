@@ -5600,7 +5600,7 @@
     },
 
     /***
-     * @method setLocale(code)
+     * @method setLocale(localeCode)
      * @returns Locale
      * @static
      * @short Sets the current locale to be used with dates.
@@ -5610,7 +5610,7 @@
      *
      *   Date.setLocale('en')
      *
-     * @param {string} code
+     * @param {string} localeCode
      *
      ***/
     'setLocale': function(code) {
@@ -5618,7 +5618,7 @@
     },
 
     /***
-     * @method addLocale(code, def)
+     * @method addLocale(localeCode, def)
      * @returns Locale
      * @static
      * @short Adds a locale definition to the locales understood by Sugar.
@@ -5628,7 +5628,7 @@
      *
      *   Date.addLocale('eo', {})
      *
-     * @param {string} code
+     * @param {string} localeCode
      * @param {Object} def
      *
      ***/
@@ -5637,16 +5637,16 @@
     },
 
     /***
-     * @method removeLocale(code)
+     * @method removeLocale(localeCode)
      * @returns Locale
      * @static
-     * @short Deletes the the locale by `code` from Sugar's known locales.
+     * @short Deletes the the locale by `localeCode` from Sugar's known locales.
      * @extra For more, see `date locales`.
      * @example
      *
      *   Date.removeLocale('foo')
      *
-     * @param {string} code
+     * @param {string} localeCode
      *
      ***/
     'removeLocale': function(code) {
@@ -6190,7 +6190,7 @@
      *   yesterday.relativeTo('today', 'ja') -> 一日
      *
      * @param {string|number|Date} d
-     * @param {string} code
+     * @param {string} localeCode
      *
      *
      ***/
@@ -6720,7 +6720,7 @@
         result  = [];
 
     if (!rangeIsValid(range)) {
-      return [];
+      return countOnly ? NaN : [];
     }
     if (isFunction(step)) {
       fn = step;
@@ -7038,7 +7038,7 @@
   // Duration text formats
   var RANGE_REG_FROM_TO        = /(?:from)?\s*(.+)\s+(?:to|until)\s+(.+)$/i,
       RANGE_REG_REAR_DURATION  = RegExp('(.+)\\s*for\\s*' + FULL_CAPTURED_DURATION, 'i'),
-      RANGE_REG_FRONT_DURATION = RegExp('(?:for)?\\s*'+ FULL_CAPTURED_DURATION +'\\s*(?:starting)?\\s*at\\s*(.+)', 'i');
+      RANGE_REG_FRONT_DURATION = RegExp('(?:for)?\\s*'+ FULL_CAPTURED_DURATION +'\\s*(?:starting)?\\s(?:at\\s)?(.+)', 'i');
 
   var DateRangeConstructor = function(start, end) {
     if (arguments.length === 1 && isString(start)) {
